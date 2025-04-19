@@ -34,7 +34,7 @@ app.post("/chat", async (req, res) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "qwen/qwq-32b:free", // Change if needed
+                model: "anthropic/claude-3.7-sonnet", // Change if needed
                 messages: [
                     { role: "system", content: PREAMBLE },
                     { role: "user", content: userMessage }
