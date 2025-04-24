@@ -7,6 +7,8 @@ const fetch = require("node-fetch"); // Ensure node-fetch is installed
 const app = express();
 
 app.use(cors());
+app.options("*", cors()); // 👈 Handles preflight OPTIONS requests
+
 app.use(bodyParser.json());
 
 const apiKey = process.env.OPENROUTER_API_KEY;
@@ -22,7 +24,7 @@ Answer all customer service questions. Keep initial responses under 20 words. Be
 
 
 // Chat endpoint
-app.options("*", cors()); // Handles the preflight correctly
+
 
 app.post("/chat", async (req, res) => {
     const userMessage = req.body.message;
