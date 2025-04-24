@@ -47,8 +47,17 @@ app.post("/chat", async (req, res) => {
             })
         });
 
-        const data = await response.json();
-        console.log("OpenRouter response:", data);
+        const text = await response.text();
+console.log("Raw OpenRouter response:", text);
+
+let data;
+try {
+  data = JSON.parse(text);
+} catch (e) {
+  console.error("❌ Failed to parse JSON:", e);
+  return res.json({ reply: "⚠️ Invalid JSON from OpenRouter", raw: text });
+}
+
 
         if (data.choices && data.choices.length > 0) {
             res.json({ reply: data.choices[0].message.content.trim() });
