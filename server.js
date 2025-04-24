@@ -23,50 +23,49 @@ Answer all customer service questions. Keep initial responses under 20 words. Be
 
 // Chat endpoint
 app.post("/chat", async (req, res) => {
-    const { message, botId = "default" } = req.body;
-  
-    if (!message) {
-      return res.status(400).json({ reply: "Missing 'message' field in request." });
-    }
-  
-    console.log("User message received:", message);
-    console.log("Bot ID:", botId);
-  
+    const userMessage = req.body.message;
+    console.log("User message received:", userMessage);
+
     try {
-      const response = await fetch(`${baseUrl}/chat/completions`, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "anthropic/claude-3.7-sonnet",
-          messages: [
-            { role: "system", content: PREAMBLE },
-            { role: "user", content: message }
-          ],
-          max_tokens: 200
-        })
-      });
-  
-      const data = await response.json();
-      console.log("OpenRouter response:", data);
-  
-      if (data.choices && data.choices.length > 0) {
-        res.json({ reply: data.choices[0].message.content.trim() });
-      } else {
-        throw new Error("Invalid response from OpenRouter");
-      }
+        const response = await fetch(`${baseUrl}/chat/completions`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${apiKey}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "anthropic/claude-3.7-sonnet", // Change if needed
+                messages: [
+                    { role: "system", content: PREAMBLE },
+                    { role: "user", content: userMessage }
+                ],
+                max_tokens: 200
+            })
+        });
+
+        const data = await response.json();
+        console.log("OpenRouter response:", data);
+
+        if (data.choices && data.choices.length > 0) {
+            res.json({ reply: data.choices[0].message.content.trim() });
+        } else {
+            throw new Error("Invalid response from OpenRouter");
+        }
     } catch (error) {
-      console.error("Error getting AI response:", error);
-      res.json({ reply: "Error processing request." });
+        console.error("Error getting AI response:", error);
+        res.json({ reply: "Error processing request." });
     }
-  });
-
-  const PORT = process.env.PORT || 3008;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });
+
+const PORT = process.env.PORT || 3002;
+const HOST = "0.0.0.0"; // Allows external access
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+
+
+
 
   
