@@ -22,6 +22,8 @@ Answer all customer service questions. Keep initial responses under 20 words. Be
 
 
 // Chat endpoint
+app.options("*", cors()); // Handles the preflight correctly
+
 app.post("/chat", async (req, res) => {
     const userMessage = req.body.message;
     console.log("User message received:", userMessage);
