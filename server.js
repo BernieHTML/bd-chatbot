@@ -42,7 +42,7 @@ app.post("/chat", async (req, res) => {
                     { role: "system", content: PREAMBLE },
                     { role: "user", content: userMessage }
                 ],
-                max_tokens: 100
+                max_tokens: 150
             })
         });
 
