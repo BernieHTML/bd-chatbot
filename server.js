@@ -53,7 +53,7 @@ Edit
 <contact-box>
 📞 Call Us  
 📧 Email Us  
-🤖 Check Out TexFlow 
+✨ Check Out TexFlow 
 </contact-box>
 Only include the buttons that are relevant based on what the user asks.
 
