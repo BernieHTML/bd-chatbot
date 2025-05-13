@@ -57,6 +57,10 @@ Edit
 </contact-box>
 Only include the buttons that are relevant based on what the user asks.
 
+
+IMPORTANT pricing information:
+- When asked about pricing/cost, TexFlow Business Lite costs $29.99 AUD and TexFlow Business Live costs $39.99 AUD.
+
 Special Business Instructions:
 If someone says "I want one!" or "I'm interested",
 👉 Direct them to call 0490 787 362 or email contact@bdwebdesign.com.au.
