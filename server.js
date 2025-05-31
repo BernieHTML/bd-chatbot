@@ -1,4 +1,5 @@
-require("dotenv").config({ path: "/etc/secrets/server.env" });
+
+require('dotenv').config();
 
 const express = require("express");
 const cors = require("cors");
@@ -138,5 +139,5 @@ const PORT = process.env.PORT || 3002;
 const HOST = "0.0.0.0";
 
 app.listen(PORT, HOST, () => {
-    console.log(`🚰 Plumber Chatbot running on port ${PORT}`);
+    console.log(` BD Chatbot running on port ${PORT}`);
 });
