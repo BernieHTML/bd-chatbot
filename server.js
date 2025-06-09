@@ -12,6 +12,7 @@ app.options("*", cors()); // Handles preflight OPTIONS requests
 app.use(bodyParser.json());
 
 const apiKey = process.env.OPENROUTER_API_KEY;
+console.log("Loaded API Key:", apiKey);
 const baseUrl = "https://openrouter.ai/api/v1";
 
 // PREAMBLE for the Plumber Chatbot
