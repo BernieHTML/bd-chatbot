@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const apiKey = process.env.OPENROUTER_API_KEY;
 console.log("Loaded API Key:", apiKey);
 console.log("🔐 Final API Key used:", apiKey);
-const baseUrl = "https://openrouter.ai/api/v1";
+const baseUrl = "https://openrouter.ai/api/v1/chat/completions";
 
 // PREAMBLE for the Plumber Chatbot
 const PREAMBLE = `You are TexFlow, a fast, friendly AI assistant for small businesses.
@@ -99,7 +99,7 @@ app.post("/chat", async (req, res) => {
     console.log("User message received:", userMessage);
 
     try {
-        const response = await fetch(`${baseUrl}/chat/completions`, {
+        const response = await fetch(baseUrl, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${apiKey}`,
