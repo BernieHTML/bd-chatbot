@@ -137,7 +137,7 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3002;
 const HOST = "0.0.0.0";
 
 app.listen(PORT, HOST, () => {
